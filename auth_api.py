@@ -129,7 +129,10 @@ async def google_callback(request: Request):
         return {"access_token": access_token, "token_type": "bearer","user": user}
 
     except requests.exceptions.RequestException as e:
-        raise HTTPException(status_code=500, detail="Error fetching user info")
+        raise HTTPException(status_code=500, detail=f"Error fetching user info: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        raise HTTPException(status_code=500, detail=f"An unexpected error occurred is: {e}")
     
 
 
@@ -201,7 +204,7 @@ async def github_callback(request: Request):
 
     except requests.exceptions.RequestException as e:
         print(f"Error during GitHub authentication: {e}")
-        raise HTTPException(status_code=500, detail="Error during GitHub authentication")
+        raise HTTPException(status_code=500, detail=f"Error during GitHub authentication: {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-        raise HTTPException(status_code=500, detail="An unexpected error occurred.")
+        raise HTTPException(status_code=500, detail=f"An unexpected error occurred is: {e}")
