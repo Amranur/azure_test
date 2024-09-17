@@ -6,3 +6,10 @@ alembic
 pytest
 requests
 python-jose
+authlib
+starlette
+jwt
+python-dotenv
+oauthlib
+itsdangerous
+httpx
