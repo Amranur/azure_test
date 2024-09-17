@@ -25,7 +25,7 @@ app.add_middleware(
 app.include_router(crud_router)
 app.include_router(auth_router)
 
-# Root
+#  Root
 @app.get("/")
 async def root():
-    return {"message": "working"}
+    return {"message": "working"} 
